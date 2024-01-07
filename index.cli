@@ -1,0 +1,67 @@
+define dir(){
+    let files = [];
+    let command = cmd("dir.bat");
+    let filenames = split(command, " ");
+    let i = len(filenames);
+    let i = (i-1);
+    while (i>0){
+        let files[i] = filenames[i];
+        let i = (i-1);
+    };
+    pop(files, 0);
+    return files;
+};
+
+define copyfile(file, newfile){
+    let command = cmd('copy.bat "' & file & '" "' & newfile & '"');
+    return num(command);
+};
+
+define copydir(dir, newdir){
+    let command = cmd('copyd.bat "' & dir & '" "' & newdir & '"');
+    return num(command);
+};
+
+define mkdir(dir){
+    let command = cmd("mkd.bat " & dir);
+    return num(command);
+};
+
+define rmdir(dir){
+    let command = cmd("rmd.bat " & dir);
+    return num(command);
+};
+
+define movefile(file, newfile){
+    try {
+        copyfile(file, newfile);
+        return num(0);
+    } handle {
+        return num(1);
+    };
+};
+
+define movedir(dir, newdir){
+    try {
+        copydir(dir, newdir);
+        return num(0);
+    } handle {
+        return num(1);
+    };
+};
+
+define renamefile(file, newfile){
+    try {
+        let copy = copyfile(file, newfile);
+        if (copy==0){
+            return delete(file);
+        } else {
+            return num(1);
+        };
+    } handle {
+        return num(1);
+    };
+    return num(0);
+};
+
+let r = renamefile("script.js", "run.js");
