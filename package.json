@@ -1,0 +1,8 @@
+{
+    "name": "winfs",
+    "version": "1.0.0",
+    "description": "A package for working with Windows File System",
+    "author": "Vishok Manikantan",
+    "entry": "index.js"
+}
+  
