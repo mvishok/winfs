@@ -5,4 +5,4 @@ set "files="
 for %%I in (*) do set "files=!files!%%I "
 set "folders="
 for /d %%I in (*) do set "folders=!folders!%%I "
-echo %files:~0,-1% %folders:~0,-1%
+echo %folders:~0,-1% %files:~0,-1%
