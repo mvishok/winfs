@@ -1,6 +1,6 @@
 define dir(){
     let files = [];
-    let command = cmd("cd " & CWD & " && " & PATH & "lib\winfs\dir.bat");
+    let command = cmd('cd "' & CWD & '" && "' & PATH & '\lib\winfs\dir.bat"');
     let filenames = split(command, " ");
     let i = len(filenames);
     let i = (i-1);
@@ -13,22 +13,22 @@ define dir(){
 };
 
 define copyfile(file, newfile){
-    let command = cmd("cd " & CWD & " && " & PATH & 'lib\winfs\copy.bat "' & file & '" "' & newfile & '"');
+    let command = cmd('cd "' & CWD & '" && "' & PATH & '\lib\winfs\copy.bat "' & file & '" "' & newfile & '"');
     return num(command);
 };
 
 define copydir(dir, newdir){
-    let command = cmd("cd " & CWD & " && " & PATH & 'copyd.bat "' & dir & '" "' & newdir & '"');
+    let command = cmd('cd "' & CWD & '" && "' & PATH & 'copyd.bat "' & dir & '" "' & newdir & '"');
     return num(command);
 };
 
 define mkdir(dir){
-    let command = cmd("cd " & CWD & " && " & PATH & "mkd.bat " & dir);
+    let command = cmd('cd "' & CWD & '" && "' & PATH & "mkd.bat " & dir);
     return num(command);
 };
 
 define rmdir(dir){
-    let command = cmd("cd " & CWD & " && " & PATH & "rmd.bat " & dir);
+    let command = cmd('cd "' & CWD & '" && "' & PATH & "rmd.bat " & dir);
     return num(command);
 };
 
